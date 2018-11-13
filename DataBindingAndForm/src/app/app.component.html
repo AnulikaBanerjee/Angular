@@ -1,0 +1,46 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <!-- <img width="300" alt="Angular Logo" src="../assets/images/sstLogo.png"> -->
+  <br/>
+ <input [value]='name' (input)="name=$event.target.value" />
+ 
+ <input  (input)="name=$event.target.value" />
+ <input [(ngModel)]='name'/>
+ <p>{{name}}</p>
+</div>
+<form #companyForm="ngForm" (ngSubmit)="submitCompany(companyForm.form);">
+<input type="text" 
+     class="form-control" 
+     name="company-name"
+     ngModel #nameField="ngModel"
+     required
+     minlength="3">
+<div *ngIf="nameField.touched && nameField.errors"><div class="alert alert-danger" 
+      *ngIf="nameField.errors.required">
+      The company name is required
+ </div>
+ <div class="alert alert-danger" 
+ *ngIf="nameField.errors.minlength">
+ The company name should be at least {{ nameField.errors.minlength.requiredLength }} characters long
+</div></div>
+
+<select class="form-control" 
+      name="company-industry"
+      ngModel
+      #industryField="ngModel"
+      required>
+      <option *ngFor="let industry of industries" 
+           [value]="industry.id">
+           {{ industry.name }}
+      </option> 
+</select>
+<div class="alert alert-danger" 
+   *ngIf="industryField.touched && !industryField.valid">
+    The industry is required
+</div>
+
+<button class="btn btn-primary" [disabled]="!companyForm.valid">Submit</button>
+  </form>
