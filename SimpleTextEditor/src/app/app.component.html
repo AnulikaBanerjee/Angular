@@ -1,0 +1,7 @@
+<div id="main">
+  <div class="tooltip" [style.visibility]="isMiddleDivVisible ? 'visible' : 'hidden'">
+    <input type="text" [(ngModel)]="value">
+  </div>
+  <p (click)="toggleVisibility()">{{value}}</p>
+  <label>Click on the text to get/hide the editor</label>
+</div>
