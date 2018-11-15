@@ -1,0 +1,11 @@
+<div class="todo-input-wrapper">
+  <input type="text" [(ngModel)]="todoText" value={{todoText}}/>
+  <button class="btn btn-primary" (click)="addTodo()">Submit</button>
+  </div>
+  <!--<div class="container">
+    <div class="col-sm-12">-->
+      <div class="checkbox">
+      <ul class="list-group" >
+        <li  class="list-group-item" draggable="true"  *ngFor="let todo of getTodos()" ><input type="checkbox" class="pull-left" value="todo.bool" (click)="toggleCheck(todo)"><span >{{ todo.text }} </span><span (click)="delete(todo)" class="badge">X</span></li>
+      </ul>
+    </div>
